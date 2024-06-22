@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------
-	SHAREJIANG
+	Sharejiang
 	About: A shiny new Blocs website.
-	Author: sharejiang
+	Author: Youwei Jiang
 	Version: 1.0
 	Built with Blocs
 -----------------------------------------------------------------------------------*/
@@ -57,6 +57,37 @@ a:hover{text-decoration: none; cursor:pointer;}
 	padding:20px;
 }
 
+/* = Full Screen Blocs 
+-------------------------------------------------------------- */
+
+.bloc-fill-screen{
+	min-height:100vh;
+	display: flex;
+	flex-direction: column;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.bloc-fill-screen > .container{
+	align-self: flex-middle;
+	flex-grow: 1;
+	display: flex;
+	flex-wrap: wrap;
+}
+.bloc-fill-screen > .container > .row{
+	flex-grow: 1;
+	align-self: center;
+	width:100%;
+}
+.bloc-fill-screen .fill-bloc-top-edge, .bloc-fill-screen .fill-bloc-bottom-edge{
+	flex-grow: 0;
+}
+.bloc-fill-screen .fill-bloc-top-edge{
+	align-self: flex-start;
+}
+.bloc-fill-screen .fill-bloc-bottom-edge{
+	align-self: flex-end;
+}
+
 /* = Full Width Blocs 
 -------------------------------------------------------------- */
 
@@ -78,22 +109,34 @@ a:hover{text-decoration: none; cursor:pointer;}
 }
 
 
-/* Group Styles */
+/* Background Styles */
 
-.bloc-group{
-	display:flex;
+.bg-center,.bg-l-edge,.bg-r-edge,.bg-t-edge,.bg-b-edge,.bg-tl-edge,.bg-bl-edge,.bg-tr-edge,.bg-br-edge,.bg-repeat{
+	-webkit-background-size: auto!important;
+	-moz-background-size: auto!important;
+	-o-background-size: auto!important;
+	background-size: auto!important;
 }
-.bloc-tile-2{
-	width:50%;
+
+
+/* Video Background Styles */
+
+.video-bg-container, .bloc-video{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	right: -50%;
+	overflow: hidden;
+	transform: translateX(-50%);
+	-webkit-transform:translateX(-50%);
 }
-.bloc-tile-3{
-	width:33.33333333%;
-}
-.bloc-tile-4{
-	width:25%;
-}
-.bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{
-	width:100%;
+.bloc-video, .video-bg-container iframe{
+	width: auto;
+	height: auto;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: 0;
 }
 
 
@@ -205,10 +248,21 @@ button{
 }
 
 
+/* = Icons
+-------------------------------------------------------------- */
+.icon-md{
+	font-size:30px!important;
+}
 
 
-.text-justify{
-	text-align: justify;
+/* = Text Widths
+-------------------------------------------------------------- */
+.text-w-70{
+	max-width:70%;
+}
+.text-center.text-w-sm, .text-center.text-w-md, .text-center.text-w-lg, .text-center.text-w-90, .text-center.text-w-80, .text-center.text-w-70, .text-center.text-w-60, .text-center.text-w-50{
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
@@ -245,6 +299,19 @@ button{
 	width: 100%;
 }
 }
+/* = Classic Dividers
+-------------------------------------------------------------- */
+.divider-h{
+	min-height: 1px;
+	background-color:rgba(0,0,0,.2);
+	margin: 20px 0;
+}
+.divider-half{
+	width: 50%;
+}
+.dropdown-menu .divider-h{
+	margin:0;
+}
 
 
 
@@ -278,17 +345,38 @@ button{
 /* = Custom Styling
 -------------------------------------------------------------- */
 
-h1,h2,h3,h4,h5,h6,p,label,.btn,a{
-	font-family:"Helvetica";
+h1{
+	font-family:"Poppins";
+	font-weight:500;
+	color:var(--swatch-var-2869)!important;
+	font-size:64px;
 }
 .container{
 	max-width:1140px;
 }
-.h3-style{
-	font-size:28px;
+.navbar-logo{
+	text-transform:none;
+	text-decoration:none;
+	font-size:20px;
 }
-.h3-bloc-1-style{
-	font-size:36px;
+.h2-h3-h4-h5-h6-p-label--btn-a{
+	font-family:"Poppins";
+	font-weight:500;
+}
+.h3-style{
+	font-family:"Poppins";
+	color:#000000!important;
+}
+.divider-background-color{
+	background-color:#000000;
+}
+.h6-style{
+	font-family:"Poppins";
+	font-weight:500;
+}
+.h6-2016-style{
+	font-family:"Poppins";
+	font-weight:500;
 }
 
 /* = Colour
@@ -297,7 +385,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 /* Swatch Variables */
 :root{
 	
-	--swatch-var-没有选择-Copy:#000000;
+	--swatch-var-2869:rgba(0,0,0,0.90);
 	
 }
 
@@ -305,8 +393,17 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 
 /* Text colour styles */
 
-.tc-5453{
-	color:var(--swatch-var-没有选择-Copy)!important;
+.tc-2869{
+	color:var(--swatch-var-2869)!important;
+}
+
+/* Link colour styles */
+
+.ltc-2869{
+	color:var(--swatch-var-2869)!important;
+}
+.ltc-2869:hover{
+	color:rgba(0,0,0,0.90)!important;
 }
 
 
@@ -390,3 +487,10 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	   height: 320px;
     }
 }
+@media (max-width: 575px){
+	.navbar-logo{
+		font-size:18px;
+	}
+	
+}
+
